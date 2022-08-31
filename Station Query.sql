@@ -6,3 +6,18 @@ where LAT_N is the northern latitude and LONG_W is the western longitude.
 Sample Input : For example, CITY has four entries: DEF, ABC, PQRS and WXY.
 Sample Output : ABC 3 PQRS 4
 Explanation : When ordered alphabetically, the CITY names are listed as ABC, DEF, PQRS, and WXY, with lengths  and . The longest name is PQRS, but there are  options for shortest named city. Choose ABC, because it comes first alphabetically.
+
+SOLUTION :
+(
+    SELECT CITY, LENGTH(CITY)
+    FROM STATION
+    ORDER BY LENGTH(CITY), CITY
+    LIMIT 1
+)
+UNION
+(
+    SELECT CITY, LENGTH(CITY)
+    FROM STATION
+    ORDER BY LENGTH(CITY) DESC, CITY
+    LIMIT 1
+);
